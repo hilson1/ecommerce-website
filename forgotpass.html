@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Make modal visible by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="id01" class="modal">
+  
+  <form id="resetForm" class="modal-content animate" method="post">
+    <div class="imgcontainer">
+      <span onclick="window.location.href='login.html';" class="close" title="Close Modal">&times;</span>
+      <img src="images/fg.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container" id="step1">
+      <label for="email"><b>Email</b></label>
+      <input type="text" id="email" placeholder="Enter your Email" name="email" required>
+
+      <label for="uname"><b>Username</b></label>
+      <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+        
+      <button type="button" onclick="sendCode()">Submit</button>
+    </div>
+
+    <div class="container" id="step2" style="display:none;">
+      <label for="code"><b>Verification Code</b></label>
+      <input type="text" id="code" placeholder="Enter the code sent to your email" name="code" required>
+        
+      <button type="button" onclick="verifyCode()">Verify Code</button>
+    </div>
+
+    <div class="container" id="step3" style="display:none;">
+      <label for="newpassword"><b>New Password</b></label>
+      <input type="password" id="newpassword" placeholder="Enter New Password" name="newpassword" required>
+      
+      <button type="button" onclick="setNewPassword()">Set New Password</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="window.location.href='login.html'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Step 1: Send code (Simulate sending code)
+function sendCode() {
+  // Simulate sending email code (normally handled via server-side)
+  alert("A code has been sent to your email.");
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+}
+
+// Step 2: Verify code (Simulate code verification)
+function verifyCode() {
+  var codeInput = document.getElementById('code').value;
+  
+  // Simulate code verification (replace with actual server-side check)
+  if (codeInput === "123456") { // Example of a correct code
+    alert("Code verified.");
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'block';
+  } else {
+    alert("Invalid code, please try again.");
+  }
+}
+
+// Step 3: Set new password (Simulate password reset)
+function setNewPassword() {
+  var newPassword = document.getElementById('newpassword').value;
+  
+  if (newPassword) {
+    // Simulate setting new password (normally handled server-side)
+    alert("Your password has been reset successfully.");
+    window.location.href = 'login.html'; // Redirect to login page
+  } else {
+    alert("Please enter a new password.");
+  }
+}
+</script>
+
+</body>
+</html>
